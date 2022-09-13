@@ -4,7 +4,7 @@ This repository will bring the overview about AWS in Myanmar Language
 ![image](https://user-images.githubusercontent.com/65077687/189871976-ebf6bbc0-de20-40e7-942c-ca117c575a87.png)
 
     အရင်ဆုံးAWS region တွေအကြောင်း တီးခေါက်ကြတာပေါ့။ Multi-player online game တွေ ဘာတွေဆော့ရင် SEA server, Korea server တွေရှိတာပေါ့။ AWS မှာလည်း ဘယ် server မှာ ဆော့မှာလဲထက် ဘယ် region မှာ အလုပ်လုပ်မှာလည်း ရွေးရမှာပေါ့။ :3
- 	Myanmar ကနေဆို မအူပင် (Mumbai xD) ရယ် Singapore region က နီးတယ် ပြော လို့ ရတယ်။ မြန်မာကproduction sites တွေက Singapore region မှာ ဆောက်တာများတယ်။ မအူပင်ကတော့ latency များတယ်ပေါ့ (အဲ့မှာ မစမ်းဖူးတော့ ကြားဖူးတာ ထည့်ထားပေးတာ ^^)။ကျွန်တော်က တော့ lab testing တွေစမ်းရင် north Virginia region မှာစမ်းတယ်။ cheapest region in aws လို့ ပြောလို့ရတယ်။ aws services cost တွေက region ပေါ်မူတည်ပြီး စျေးကွာတာ သိရမှာပေါ့။ 
+    Myanmar ကနေဆို မအူပင် (Mumbai xD) ရယ် Singapore region က နီးတယ် ပြော လို့ ရတယ်။ မြန်မာကproduction sites တွေက Singapore region မှာ ဆောက်တာများတယ်။ မအူပင်ကတော့ latency များတယ်ပေါ့ (အဲ့မှာ မစမ်းဖူးတော့ ကြားဖူးတာ ထည့်ထားပေးတာ ^^)။ကျွန်တော်က တော့ lab testing တွေစမ်းရင် north Virginia region မှာစမ်းတယ်။ cheapest region in aws လို့ ပြောလို့ရတယ်။ aws services cost တွေက region ပေါ်မူတည်ပြီး စျေးကွာတာ သိရမှာပေါ့။ 
     
 ![image](https://user-images.githubusercontent.com/65077687/189872067-e570f635-7023-493f-846d-8a8b762de625.png)
 
@@ -31,16 +31,16 @@ server တစ်လုံး down သွားရင် နောက် တစ�
 ![image](https://user-images.githubusercontent.com/65077687/189872461-3b820b33-26b4-4849-98c8-62c5f58c5fbb.png)
 
     ELB မှာက Type 4 မျိုးရှိတယ်
-Application load balancer (ALB) 
+        1. Application load balancer (ALB) 
 	သူ ကို အခု article diagram မှာသုံးပြထားတယ်ပေါ့။ OSI 7 layers မှာ application layer (layer 7) မှာရှိပြီး request level အနေနဲ့ အလုပ်လုပ်တယ်။ features တွေက advanced routing weight မျှပြီး route ခွဲတာတွေ၊ TLS termination SSL certificates တွေကို အလယ်ကနေ ထည့်ထားပြီး terminate လုပ်တာ၊ listen at different ports မတူတဲ့ port တွေမှာ request လို့ရအောင် support တယ်
-2. Network load balancer (NLB) 
+        2. Network load balancer (NLB) 
 	Application ကို သုံး ရင် လုံးဝ low latency၊ အာထရ အာထရာ max performance ရချင်ရင် သုံးတယ်။ Connection level အနေနဲ့ အလုပ်လုပ်တယ်၊ သူလည်း target group တွေဆီ traffic route တာ support တယ်။ ultramax low latency high performance ဆိုတော့ million request per second ခံနိုင်တယ်။ :3 
-3. Gateway load balancer (GLB) 
+        3. Gateway load balancer (GLB) 
 	သူကကျ AWS ဆီက မဟုတ်ဘဲ အပြင်က vendor တွေရဲ့ virtual appliances (cloud ပေါ်ဆိုတော့ virtual ပဲပေါ့ :D) တွေကို deploy, scale, manage လုပ်ဖို့ဆိုသုံးတယ်။ third party virtual appliances တွေက ဘယ်ကရနိုင်လဲဆို AWS marketplace က ဝယ်လို့ရပါတယ် 
-4. Classic load balancer 
+        4. Classic load balancer 
 	ဒီကောင်က လာမဲ့ august 2022 မှာ aws က retire တော့မှာ( I think we can skip :3)
 
-အောက်က ပုံမှာဆိုရင် Application load balancer (ALB) က လာသမျှ traffic request တွေရဲ့ ဝင်ပေါက်လို အလုပ်လုပ်တယ်။ သူကနေမှ target group တွေဆီကို traffic distribute လုပ်ပေးတာပေါ့။ 
+        အောက်က ပုံမှာဆိုရင် Application load balancer (ALB) က လာသမျှ traffic request တွေရဲ့ ဝင်ပေါက်လို အလုပ်လုပ်တယ်။ သူကနေမှ target group တွေဆီကို traffic distribute လုပ်ပေးတာပေါ့။ 
 
 ပုံမှာဆို target group 1 ကို request hit ရင် server နှစ်လုံးရှိတာ တစ်လုံးfail နေရင် healthy ဖြစ်နေတဲ့ နောက်တစ်လုံးဆီ traffic ကို ELB က ရောက်အောင် လုပ်ပေးနိုင်တယ်။ ELB သုံးတာရဲ့ ကောင်းတာက managed by AWS ဖြစ်တာကြောင့် resilient and elastic ဖြစ်တာပေါ့။ 99.999999% fail ခဲပါတယ် :DD
 
